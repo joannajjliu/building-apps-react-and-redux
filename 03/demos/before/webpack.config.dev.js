@@ -7,13 +7,13 @@ process.env.NODE_ENV = "development";
 module.exports = {
   mode: "development",
   target: "web", //determines how webpack bundles our code (web is for browser)
-  devTool: "cheap-module-source-map", //source map, typically used in dev to see source code
+  devtool: "cheap-module-source-map", //source map, typically used in dev to see source code
   entry: "./src/index", //also webpack default
   output: {
     //in dev, these values are served from memory (not visible in file structure), but still necessary
     path: path.resolve(__dirname, "build"),
     publicPath: "/",
-    fileName: "bundle.js",
+    filename: "bundle.js",
   },
   devServer: {
     //how app is served in development, will be using webpack here, also possible to do via express
@@ -35,7 +35,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: ["babel-loader", "eslint-loader"],
       },
       {
         test: /(\.css)$/,
